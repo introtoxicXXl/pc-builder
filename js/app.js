@@ -34,8 +34,8 @@
 //   calculate();
 // })
 function clickBtn(product,price){
-    const memoryCost = document.getElementById(product);
-    memoryCost.innerText = price;
+    const productCost = document.getElementById(product);
+    productCost.innerText = price;
     calculate();
 }
 
@@ -45,4 +45,18 @@ function calculate(){
   const storageCost = document.getElementById('storage-cost').innerText;
   const deliveryCost = document.getElementById('delivery-cost').innerText;
   document.getElementById('total-price').innerText =parseInt(bestPrice) + parseInt(memoryCost) + parseInt(storageCost) + parseInt(deliveryCost);
+}
+
+
+function cuponCode(){
+  const fakeCode = 'february';
+  const inputValue = document.getElementById('promo-input').value;
+  if(inputValue === fakeCode){
+    const totalPriceText = document.getElementById('total-price');
+    let totalPrice = parseFloat(totalPriceText.innerText);
+    const discount = totalPrice * 0.2;
+    totalPriceText.innerText = totalPrice - discount;
+  }else{
+    alert('input valid cupon code');
+  }
 }
